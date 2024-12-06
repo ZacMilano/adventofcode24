@@ -1,5 +1,11 @@
+def parseInput(input: str):
+  tuples = [tuple(map(int, line.split())) for line in input.strip().split('\n')]
+  return list(zip(*tuples))
+
 def main(input: str):
-  pass
+  [list1, list2] = parseInput(input)
+  print(list1)
+  print(list2)
 
 if __name__ == '__main__':
   main("""
