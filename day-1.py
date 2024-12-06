@@ -2,7 +2,7 @@ def parseInput(input: str):
   tuples = [tuple(map(int, line.split())) for line in input.strip().split('\n')]
   return list(zip(*tuples))
 
-def main(input: str):
+def part1(input: str):
   [list1, list2] = parseInput(input)
 
   list1 = sorted(list1)
@@ -12,7 +12,37 @@ def main(input: str):
   
   totalDistance = sum(distances)
 
+  print('part 1')
   print(totalDistance)
+
+def frequenciesFromList(list: list[int]) -> dict[int, int]:
+  frequencies = dict()
+  
+  for item in list:
+    if item in frequencies:
+      frequencies[item] += 1
+    else:
+      frequencies[item] = 1
+  
+  return frequencies
+
+def part2(input: str):
+  [list1, list2] = parseInput(input)
+  
+  frequencies2 = frequenciesFromList(list2)
+  
+  result = 0
+  
+  for value in list1:
+    if value in frequencies2:
+      result += value * frequencies2[value]
+
+  print('part 2')
+  print(result)
+
+def main(input: str):
+  part1(input)
+  part2(input)
 
 if __name__ == '__main__':
   main("""
