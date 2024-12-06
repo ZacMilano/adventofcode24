@@ -4,8 +4,15 @@ def parseInput(input: str):
 
 def main(input: str):
   [list1, list2] = parseInput(input)
-  print(list1)
-  print(list2)
+
+  list1 = sorted(list1)
+  list2 = sorted(list2)
+  
+  distances = [abs(x - y) for x, y in zip(list1, list2)]
+  
+  totalDistance = sum(distances)
+
+  print(totalDistance)
 
 if __name__ == '__main__':
   main("""
